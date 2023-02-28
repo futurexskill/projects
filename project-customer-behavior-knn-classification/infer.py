@@ -15,7 +15,7 @@ with open('scaler.pickle','rb') as f:
   scaler_new = pickle.load(f)
 
 import pandas as pd
-new_df = pd.read_csv("https://raw.githubusercontent.com/data-es-institute/projects/main/project-1-customer-purchase-behavior-knn/new_customers.csv")
+new_df = pd.read_csv("https://raw.githubusercontent.com/futurexskill/projects/main/project-customer-behavior-knn-classification/new_customers.csv")
 
 new_df
 

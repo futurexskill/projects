@@ -10,7 +10,7 @@ Original file is located at
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv("https://raw.githubusercontent.com/data-es-institute/projects/main/project-1-customer-purchase-behavior-knn/purchase_history.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/futurexskill/projects/main/project-customer-behavior-knn-classification/purchase_history.csv")
 
 df.head()
 
