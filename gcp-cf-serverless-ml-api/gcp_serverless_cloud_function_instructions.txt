@@ -1,0 +1,67 @@
+import requests
+import pickle
+from google.cloud import storage
+import numpy as np
+import sklearn
+
+def hello_world(request):
+    """Responds to any HTTP request.
+    Args:
+        request (flask.Request): HTTP request object.
+    Returns:
+        The response text or any set of values that can be turned into a
+        Response object using
+        `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.
+    """
+    request_json = request.get_json()
+    
+	storage_client = storage.Client()
+    bucket = storage_client.get_bucket('cloudxskills')
+    blob_classifier = bucket.blob('models/knn_model.pickle')
+    blob_scaler = bucket.blob('models/scaler.pickle')
+    blob_classifier.download_to_filename('/tmp/knn_model.pickle')
+    blob_scaler.download_to_filename('/tmp/scaler.pickle')
+	
+	
+    serverless_classifier = pickle.load(open('/tmp/knn_model.pickle','rb'))
+    serverless_scaler = pickle.load(open('/tmp/scaler.pickle','rb'))
+    male = request_json['male']
+    print("male received "+str(male))
+    age = request_json['age']
+    print("age received "+str(age))
+    salary = request_json['salary']
+    print("salary received "+str(salary))
+    price = request_json['price']
+    print("price received "+str(price))
+    row_values = [male, age, salary, price]
+    print("creating numpy array")
+    x_new = np.array(row_values).reshape(1,-1)
+    print("Doing scaling now")
+    x_new_scale2 = serverless_scaler.fit_transform(x_new)
+    print("Predicting now")
+    y_new_pred = serverless_classifier.predict(x_new_scale2)
+    prediction =str(y_new_pred[0])
+    print("Purchase ? "+str(prediction))
+    return "The prediction is {}".format(prediction)
+
+
+
+
+
+requiremets.txt
+
+# Function dependencies, for example:
+# package>=version
+requests==2.24.0
+scikit-learn>=0.24.2
+google-cloud-storage==1.25.0
+numpy==1.19.2
+
+Requests
+
+{
+    "male":1,
+    "age":32,
+    "salary":45000,
+    "price":5000
+}
