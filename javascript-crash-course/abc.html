@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My second HTML page</title>
+    <link rel="stylesheet" href="site.css">
+    
+    <style>
+        h1,h2,.paragraph {
+            background-color: white;
+        }
+
+
+        #p-2 {
+            background-color: grey;
+        }
+        .divclass{
+            background-color: green;
+
+        }
+        .divclass > p{
+            background-color: blue;
+        }
+        .maindiv {
+            display: flex;
+            flex:1;
+        }
+
+        .maindiv > div:nth-of-type(2){
+            flex:2;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/abc.html">Home</a></li>
+                <li><a href="/contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    <div class="maindiv">
+        <div class="divclass">
+            <p >This is a sample paragraph</p>
+            <h1 class="paragraph">heading 1</h1>
+            <p class="paragraph" id="p-1">
+            This is paragrapah 1
+            </p>     
+            <p class="paragraph" id="p-2">
+                This is paragrapah 2
+                </p>   
+                <p id="p-3">
+                    This is paragrapah 3
+                    </p>   
+                    <button onclick="changeMe()">Try JavaScript</button>
+     
+        </div>
+
+        <div class="imageclass">
+            This is the third Div
+            <h2>This is an image</h2>
+    
+            <img src="hadoop.png" alt= "hadoop" height="500" width="300">
+        </div>
+
+
+        <div>
+            
+    <table border="1">
+        <tbody>
+        <tr>
+        <td>Name</td>
+        <td>City</td>
+        <td>Course</td>
+        </tr>
+        <tr>
+        <td>Paul</td>
+        <td>London</td>
+        <td>Hadoop</td>
+        </tr>
+        <tr>
+        <td>Mike</td>
+        <td>New York</td>
+        <td>Microservices</td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+    </div>
+    </main>
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="/abc.html">Home</a></li>
+                <li><a href="/contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+</body>
+<script src="site.js" type="text/javascript"></script>
+
+</html>
